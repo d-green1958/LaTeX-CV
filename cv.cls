@@ -14,6 +14,8 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{ragged2e}
 \RequirePackage{tabularx}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
 
 % fonts
 %\RequirePackage{lmodern}
@@ -34,6 +36,7 @@
 \newcommand{\cvsmallsz}{\fontsize{9}{9.5}\selectfont}
 \newcommand{\cvbodysz}{\fontsize{10}{11}\selectfont}
 \newcommand{\cvsectionsz}{\fontsize{12}{13}\selectfont\bfseries}
+\newcommand{\cvlargesz}{\fontsize{12}{13}\selectfont}
 \newcommand{\cvnamesz}{\fontsize{20}{22}\selectfont\bfseries}
 
 % hRule thickness
@@ -81,22 +84,21 @@
   \ifdefempty{\@cvlinkedin}
     {}
     {%
-      \faLinkedin\ \href{https://linkedin.com/in/\@cvlinkedin}{\@cvlinkedin}
+      \mbox{\faLinkedin~\href{https://linkedin.com/in/\@cvlinkedin}{\@cvlinkedin}}
     }
 }
 \newcommand{\printgithub}{
   \ifdefempty{\@cvgithub}
     {}
     {%
-      \faGithubSquare\ \href{https://github.com/\@cvgithub}{\@cvgithub}
+      \mbox{\faGithubSquare~\href{https://github.com/\@cvgithub}{\@cvgithub}}
     }
 }
 \newcommand{\printgooglescholar}{
   \ifdefempty{\@cvgooglescholar}
     {}
     {%
-      \faGraduationCap\ 
-      \href{\@cvgooglescholar}{\@cvname}
+      \mbox{\faGraduationCap~\href{\@cvgooglescholar}{\@cvname}}
     }
 }
 
@@ -104,7 +106,7 @@
   \ifdefempty{\@cvorcid}
     {}
     {%
-      \href{https://orcid.org/\@cvorcid}{ORCID}
+      \mbox{\href{https://orcid.org/\@cvorcid}{ORCID}}
     }
 }
 
@@ -112,17 +114,15 @@
   \ifdefempty{\@cvwebpage}
     {}
     {%
-      \faLaptop\ 
-      \href{\@cvwebpage}{Web Page}
+      \mbox{\faLaptop~\href{\@cvwebpage}{Web Page}}
     }
 }
 
 \newcommand{\printphoneno}{
-  \ifdefempty{\@cvwebpage}
+  \ifdefempty{\@cvphoneno}
     {}
     {%
-      \faPhone*\ 
-      \href{tel:\@cvphoneno}{:\@cvphoneno}
+      \mbox{\faPhone*~\href{tel:\@cvphoneno}{\@cvphoneno}}
     }
 }
 
@@ -130,8 +130,7 @@
   \ifdefempty{\@cvemail}
     {}
     {%
-      \faEnvelope:\ 
-      \href{mailto:\@cvemail}{\@cvemail}
+      \mbox{\faEnvelope~\href{mailto:\@cvemail}{\@cvemail}}
     }
 }
 
@@ -149,6 +148,40 @@
       \fi
       #1
     }%
+}
+
+
+% define cvitems
+\newcommand{\cvitem}[4]{%
+  \noindent
+  \begin{tabularx}{\textwidth}{@{}p{0.72\textwidth}>{\raggedleft\arraybackslash}p{0.25\textwidth}@{}}
+    \makebox[0pt][l]{\textbf{#1}} & \makebox[0pt][r]{\color{dimcol}\textit{#4}} \\[-2pt]
+    {\cvsmallsz #2} & {\cvsmallsz \faMapMarker*\ #3}
+  \end{tabularx}
+  % \vspace{4pt}
+}
+
+\newcommand{\cvitemskip}{\vspace{1.2em}}
+
+% for sections
+\newcommand{\cvsection}[1]{%
+  \vspace{1em}
+  \noindent
+  {\cvsectionsz\bfseries\color{col} #1 \hrulefill}
+  \par
+  \vspace{4pt}
+}
+
+
+\setlist[itemize]{
+  label=\faAngleRight,
+  leftmargin=1.5em,
+  itemsep=1pt,
+  font=\cvsmallsz,
+  before=\cvsmallsz,
+  topsep=0pt,
+  parsep=2pt,
+  partopsep=2pt
 }
 
 
@@ -183,39 +216,48 @@
 }
 
 
-% define cvitems
-\newcommand{\cvitem}[4]{%
+% create the 2-column header
+\newcommand{\makecvtwocolheader}{
   \noindent
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
-    \textbf{#1} & {\color{dimcol}\textit{#4}} \\
-    #2 & {\footnotesize \faMapMarker*\ #3}
-  \end{tabular*}
+  \begin{minipage}[t]{0.7\textwidth}
+    \vspace{0pt}
+    \begin{minipage}[t]{0.35\textwidth}
+      \vspace{0pt}
+      {\cvnamesz \bfseries \@cvname\par}
+      \vspace{2pt}
+      {\@cvtitle\par}
+      \vspace{1pt}   
+      {\cvsmallsz \color{dimcol} \@cvaddress\par}
+      \vspace{4pt}
+    \end{minipage}
+    \hfill % fill in the other 0.3
+    \begin{minipage}[t]{0.35\textwidth}
+      \vspace{0pt}
+      \begin{center}
+        {\cvvsmallsz   
+          \printemail
+          \printphoneno
+          \printlinkedin
+          \printgithub
+          \printwebpage
+          \printgooglescholar
+          \printorcid
+        }
+        \vspace{2pt}
+      \end{center}
+    \end{minipage}
+
+    {\cvsmallsz \@cvbio\par}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\textwidth}
+    \vspace{0pt}
+    \centering
+    \begin{tikzpicture}
+    \clip (0,0) circle (1.75cm);
+    \node at (0,0) {\includegraphics[width=3.5cm]{figs/profile.jpeg}};
+  \end{tikzpicture}
+  \end{minipage}
+  \hrulefill
 }
-
-\newcommand{\cvitemskip}{\vspace{1.2em}}
-
-% for sections
-\newcommand{\cvsection}[1]{%
-  \vspace{1em}
-  \noindent
-  {\cvsectionsz\bfseries\color{col} #1 \hrulefill}
-  \par
-  \vspace{4pt}
-}
-
-
-\setlist[itemize]{
-  label=\faAngleRight,
-  leftmargin=1.5em,
-  itemsep=1pt,
-  font=\cvsmallsz,
-  before=\cvsmallsz,
-  topsep=0pt,
-  parsep=2pt,
-  partopsep=2pt
-}
-
-
-
-
 

@@ -17,8 +17,11 @@
 \cvbio{PhD student at the University of Oxford researching floating wind turbine wake dynamics using high-performance computing. Interests include computational fluid dynamics and large-scale simulation, with a focus on applications to renewable energy engineering.}
 
 \begin{document}
-\makecvheader
-
+\makecvtwocolheader
+\vspace{5pt}
+\noindent
+\begin{minipage}[t]{0.65\textwidth}
+\vspace{0pt}
 \cvsection{Education}
 \cvitem{PhD (DPhil) Wind \& Marine Energy Systems \& Structures}{University of Oxford}{Oxford, Uk}{2023--Present}
 \begin{itemize}
@@ -44,6 +47,7 @@
 	\item MMath Project: \textit{Finite Element Solutions to the Helmholtz Equation}. Developed a C++ finite element solver for the Helmholtz equation. Assessed boundary conditions for wave scattering problems, including perfectly matched layers, Dirichlet‑to‑Neumann maps, and approximate radiation conditions
 	\item MPhys Project: \textit{Quantifying Correlation Between Geometric Uncertainties in Rectum Contouring and The Resulting Patient Toxicity}. Applied a deep learning algorithm to standardize rectal contouring. Performed statistical analysis to determine the correlation between patient outcomes and contour deviations. Resulted in publication.
 \end{itemize}
+% \cvitemskip
 
 
 \cvsection{Experience}
@@ -76,39 +80,77 @@
 \end{itemize}
 
 
-\cvsection{Skills}
-{
-%\vspace{-1em}
-%\begin{multicols}{2}
-\begin{itemize}[topsep=0pt, itemsep=1pt]
-	\item[\cvbodysz\faCode] \cvbodysz \textbf{Programming} Python | \texttt{C++} | \texttt{C} | MatLab | Linux
-	\item[\cvbodysz\faHammer] \cvbodysz \textbf{Build \& Job Automation} {bash} | {SLURM} | {Make} | {CMake}
-	\item[\cvbodysz\faSlidersH] \cvbodysz \textbf{Data Analysis} Numpy | Paraview | \texttt{VTK}
-	\item[\cvbodysz\faBolt] \cvbodysz \textbf{High-Performance Computing} {CUDA} | {HIP} | {MPI} | {MP}
-	\item[\cvbodysz\faTextHeight] \cvbodysz \textbf{Type Setting} \LaTeX | Beamer | Word
-	\item[\cvbodysz\faGit*] \cvbodysz \textbf{Version Control} {Git} | GitHub
-	\item[\cvbodysz\faTint] \cvbodysz \textbf{CFD / Numerical Methods} OpenFoam | FEA
-\end{itemize}
-%\end{multicols}
-}
-
-\newpage
-\cvsection{Courses \& Certificates}
-\begin{itemize}
-	\item \textbf{NVidia} - Fundamentals of Accelerated Copmuting With Modern CUDA C++
-	\item \textbf{Zero Institute} - Climate Tech Hackathon First Place
-	\item \textbf{University of Oxford} - Course on CUDA Programming on NVIDIA GPUs
-	\item \textbf{ARCHER2 National Super Computer} - GPU programming with kernels
-\end{itemize}
-
-\cvsection{Publications \& Presentations}
-\begin{itemize}
-	\item \textit{Support Structure Impacts on Floating Offshore Wind Turbine Wake Aerodynamics} - Paper \& Poster, The Science of Making Torque from Wind, Bruges 2026.
-	\item \textit{Energy \& Momentum Transport in The Wakes of Floating Turbines} - Presentation, Recent Advances in Turbulent Wind Farm Dynamics Colloquium, London 2026. 
-	\item \textit{Sensitivity of the Floating Actuator Line Method to Prescribed Motions} - Presentation, 21st European Academy of Wind Energy PhD Seminar PhD Seminar, Athens 2025.
-	\item \textit{Development and Validation of an Actuator Line Method for Floating Turbines} - Paper \& Presentation, XI Conference on Computational Methods in Marine Engineering, Edinburgh 2025.
-	\item \textit{New rectum dose surface mapping methodology to identify rectal subregions associated with toxicities following prostate cancer radiotherapy} - paper, Physics and Imaging in Radiation Oncology 2025.
-\end{itemize}
-
-
+\end{minipage}
+\hspace{0.01\textwidth}
+\vrule width 1pt
+\hspace{0.01\textwidth}
+\begin{minipage}[t]{0.3\textwidth}
+	\vspace{0pt}
+	\cvsection{Skills}
+	\cvbodysz
+	\vspace{3pt}
+	\cvlargesz Programming:
+	\begin{itemize}[font=\cvlargesz]
+		\item Python
+		\item \texttt{C++}
+		\item \texttt{C}
+		\item MatLab
+		\item Linux
+	\end{itemize}
+	\vspace{15pt}
+	\cvlargesz Data Analysis \& Visualisation:
+	\begin{itemize}[font=\cvlargesz]
+		\item Python:
+		\begin{itemize}
+			\item Numpy
+			\item Matplotlib
+			\item Pandas
+			\item Scipy
+		\end{itemize}
+		\item Paraview
+		\item VTK
+	\end{itemize}
+	\vspace{15pt}
+	\cvlargesz Build \& Job Automation:
+	\begin{itemize}[font=\cvlargesz]
+		\item bash
+		\item SLURM
+		\item Make
+		\item CMake
+	\end{itemize}
+	\vspace{15pt}
+	\cvlargesz High-Performance Computing:
+	\begin{itemize}[font=\cvlargesz]
+		\item CUDA
+		\item HIP
+		\item OpenMPI
+		\item OpenMP
+	\end{itemize}
+	\vspace{15pt}
+	\cvlargesz Type Setting:
+	\begin{itemize}[font=\cvlargesz]
+		\item \LaTeX
+		\item Beamer
+		\item Word
+	\end{itemize}
+	\vspace{15pt}
+	\cvlargesz Version Control:
+	\begin{itemize}[font=\cvlargesz]
+		\item Git
+		\item GitHub
+	\end{itemize}
+	\vspace{15pt}
+	\cvlargesz CFD / Numerical Methods:
+	\begin{itemize}[font=\cvlargesz]
+		\item OpenFoam
+		\item Finite Element Analysis
+	\end{itemize}
+	\vspace{10pt}
+	\cvsection{Awards \& Certificates}
+	\begin{itemize}
+		\item NVidia - CUDA Programming on NVIDIA GPUs (\texttt{C++})
+		\item University of Oxford - CUDA Programming 
+		\item Zero Institute - Climate Tech Hackathon First Place
+	\end{itemize}
+\end{minipage}
 \end{document}

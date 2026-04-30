@@ -1,8 +1,10 @@
-singlecol: singlecol.tex
+default: all
+
+singlecol: singlecol.tex cv.cls
 	pdflatex singlecol.tex
 	pdflatex singlecol.tex
 	
-doublecol: doublecol.tex
+doublecol: doublecol.tex cv.cls
 	pdflatex doublecol.tex
 	pdflatex doublecol.tex
 	
